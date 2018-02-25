@@ -33,15 +33,15 @@ echo ${FABRIC_START_TIMEOUT}
 sleep ${FABRIC_START_TIMEOUT}
 
 # Create the channel
-docker exec peer0.org1.example.com peer channel create -o orderer.example.com:7050 -c composerchannel -f /etc/hyperledger/configtx/composer-channel.tx
+docker exec peer0.vlf.zx.rs peer channel create -o orderer.vlf.zx.rs:7050 -c composerchannel -f /etc/hyperledger/configtx/composer-channel.tx
 
-# Join peer0.org1.example.com to the channel.
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer0.org1.example.com peer channel join -b composerchannel.block
+# Join peer0.vlf.zx.rs to the channel.
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer0.vlf.zx.rs peer channel join -b composerchannel.block
 
 
 # # Create the channel
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer1.org1.example.com peer channel fetch config -o orderer.example.com:7050 -c composerchannel
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer1.vlf.zx.rs peer channel fetch config -o orderer.vlf.zx.rs:7050 -c composerchannel
 # docker exec peer1.org1.example.com peer channel create -o orderer.example.com:7050 -c composerchannel -f /etc/hyperledger/configtx/composer-channel.tx
 
-# # Join peer1.org1.example.com to the channel.
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer1.org1.example.com peer channel join -b composerchannel_config.block
+# # Join peer1.vlf.zx.rs to the channel.
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer1.vlf.zx.rs peer channel join -b composerchannel_config.block

@@ -32,5 +32,5 @@ ARCH=$ARCH docker-compose -f "${DIR}"/composer/docker-compose-peer2.yml up -d
 echo ${FABRIC_START_TIMEOUT}
 sleep ${FABRIC_START_TIMEOUT}
 
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer2.org1.example.com peer channel fetch config -o orderer.example.com:7050 -c composerchannel
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp" peer2.org1.example.com peer channel join -b composerchannel_config.block
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel fetch config -o orderer.vlf.zx.rs:7050 -c composerchannel
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel join -b composerchannel_config.block

@@ -1,11 +1,11 @@
 OrdererOrgs:
   - Name: Orderer
-    Domain: example.com
+    Domain: vlf.zx.rs
     Specs:
       - Hostname: orderer
 PeerOrgs:
-  - Name: Org1
-    Domain: org1.example.com
+  - Name: VLF
+    Domain: vlf.zx.rs
     Template:
       Count: 3
     Users:

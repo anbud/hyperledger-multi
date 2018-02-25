@@ -26,32 +26,32 @@ cat << EOF > /tmp/.connection.json
     "name": "hlfv1",
     "type": "hlfv1",
     "orderers": [
-       { "url" : "grpc://localhost:7050" }
+       { "url" : "grpc://orderer.vlf.zx.rs:7050" }
     ],
     "ca": { 
-        "url": "http://localhost:7054", 
-        "name": "ca.org1.example.com"
+        "url": "http://ca.vlf.zx.rs:7054", 
+        "name": "ca.vlf.zx.rs"
     },
     "peers": [
         {
-            "requestURL": "grpc://localhost:7051",
-            "eventURL": "grpc://localhost:7053"
+            "requestURL": "grpc://peer0.vlf.zx.rs:7051",
+            "eventURL": "grpc://peer0.vlf.zx.rs:7053"
         }, {
-            "requestURL": "grpc://localhost:8051",
-            "eventURL": "grpc://localhost:8053"
+            "requestURL": "grpc://peer1.vlf.zx.rs:8051",
+            "eventURL": "grpc://peer1.vlf.zx.rs:8053"
         }, {
-            "requestURL": "grpc://localhost:9051",
-            "eventURL": "grpc://localhost:9053"
+            "requestURL": "grpc://peer2.vlf.zx.rs:9051",
+            "eventURL": "grpc://peer2.vlf.zx.rs:9053"
         }
     ],
     "channel": "composerchannel",
-    "mspID": "Org1MSP",
+    "mspID": "VLFMSP",
     "timeout": 300
 }
 EOF
 
-PRIVATE_KEY="${DIR}"/composer/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/7fe58742a0b6d1102c74293808f1736dea010d3451f9e1a804c0b86ecf90baa0_sk
-CERT="${DIR}"/composer/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
+PRIVATE_KEY="${DIR}"/composer/crypto-config/peerOrganizations/vlf.zx.rs/users/Admin@vlf.zx.rs/msp/keystore/0b2764e3a332e7fe3d354d9d7aee7dbd206c9ff57897e0f99231788d4a161191_sk
+CERT="${DIR}"/composer/crypto-config/peerOrganizations/vlf.zx.rs/users/Admin@vlf.zx.rs/msp/signcerts/Admin@vlf.zx.rs-cert.pem
 
 if composer card list -n PeerAdmin@hlfv1 > /dev/null; then
     composer card delete -n PeerAdmin@hlfv1
