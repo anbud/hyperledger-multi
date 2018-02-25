@@ -24,7 +24,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #
 
-# ARCH=$ARCH docker-compose -f "${DIR}"/composer/docker-compose-peer2.yml down
+ARCH=$ARCH docker-compose -f "${DIR}"/composer/docker-compose-peer2.yml down
 ARCH=$ARCH docker-compose -f "${DIR}"/composer/docker-compose-peer2.yml up -d
 
 # wait for Hyperledger Fabric to start
@@ -32,5 +32,5 @@ ARCH=$ARCH docker-compose -f "${DIR}"/composer/docker-compose-peer2.yml up -d
 echo ${FABRIC_START_TIMEOUT}
 sleep ${FABRIC_START_TIMEOUT}
 
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel fetch config -o orderer.vlf.zx.rs:7050 -c composerchannel
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel join -b composerchannel_config.block
+docker exec -e "CORE_PEER_MSPCONFIGPATH=//etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel fetch config -o orderer.vlf.zx.rs:7050 -c composerchannel
+docker exec -e "CORE_PEER_MSPCONFIGPATH=//etc/hyperledger/msp/users/Admin@vlf.zx.rs/msp" peer2.vlf.zx.rs peer channel join -b composerchannel_config.block
